@@ -48,6 +48,7 @@ app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
 });
 
 app.get('/posts', PostControllers.getAll);
+app.get('/tags', PostControllers.getLastTags);
 app.get('/posts/:id', PostControllers.getOne);
 app.post('/posts', checkAuth, postCreateValidation, handleValidationErrors, PostControllers.create);
 app.delete('/posts/:id', checkAuth, PostControllers.remove);
