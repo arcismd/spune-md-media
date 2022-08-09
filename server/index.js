@@ -5,11 +5,9 @@ import {
     loginValidation,
     postCreateValidation
 } from './validations/validation.js';
-import checkAuth from './utils/checkAuth.js';
-import * as UserControllers from './controllers/UserController.js';
-import * as PostControllers from './controllers/PostController.js';
+import { handleValidationErrors, checkAuth } from './utils/index.js';
+import { UserControllers, PostControllers } from './controllers/index.js';
 import multer from 'multer';
-import handleValidationErrors from './utils/handleValidationErrors.js';
 
 // DB connection
 mongoose.connect('mongodb+srv://admin:123456!@spune.apuiol2.mongodb.net/spune?retryWrites=true&w=majority', )
