@@ -8,6 +8,7 @@ import {
 import { handleValidationErrors, checkAuth } from './utils/index.js';
 import { UserControllers, PostControllers } from './controllers/index.js';
 import multer from 'multer';
+import cors from 'cors';
 
 // DB connection
 mongoose.connect('mongodb+srv://admin:123456!@spune.apuiol2.mongodb.net/spune?retryWrites=true&w=majority', )
@@ -31,6 +32,7 @@ const upload = multer({
 });
 
 app.use(express.json());
+app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', loginValidation, handleValidationErrors, UserControllers.login);
@@ -52,7 +54,7 @@ app.delete('/posts/:id', checkAuth, PostControllers.remove);
 app.patch('/posts/:id', checkAuth, postCreateValidation, handleValidationErrors, PostControllers.update);
 
 
-app.listen(3000, (err) => {
+app.listen(4444, (err) => {
     if (err) {
         return console.log(err);
     }
