@@ -9,6 +9,7 @@ import checkAuth from './utils/checkAuth.js';
 import * as UserControllers from './controllers/UserController.js';
 import * as PostControllers from './controllers/PostController.js';
 import multer from 'multer';
+import handleValidationErrors from './utils/handleValidationErrors.js';
 
 // DB connection
 mongoose.connect('mongodb+srv://admin:123456!@spune.apuiol2.mongodb.net/spune?retryWrites=true&w=majority', )
@@ -32,10 +33,11 @@ const upload = multer({
 });
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
-app.post('/auth/login', loginValidation, UserControllers.login);
+app.post('/auth/login', loginValidation, handleValidationErrors, UserControllers.login);
 
-app.post('/auth/register', registerValidation, UserControllers.register);
+app.post('/auth/register', registerValidation, handleValidationErrors, UserControllers.register);
 
 app.get('/auth/me', checkAuth, UserControllers.getMe);
 
@@ -47,9 +49,9 @@ app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
 
 app.get('/posts', PostControllers.getAll);
 app.get('/posts/:id', PostControllers.getOne);
-app.post('/posts', checkAuth, postCreateValidation, PostControllers.create);
+app.post('/posts', checkAuth, postCreateValidation, handleValidationErrors, PostControllers.create);
 app.delete('/posts/:id', checkAuth, PostControllers.remove);
-app.patch('/posts/:id', checkAuth, PostControllers.update);
+app.patch('/posts/:id', checkAuth, postCreateValidation, handleValidationErrors, PostControllers.update);
 
 
 app.listen(3000, (err) => {
