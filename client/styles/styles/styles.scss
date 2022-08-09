@@ -248,3 +248,74 @@ body {
     }
 }
 /* LOGIN / REGISTER */
+
+/* MAIN PAGE */
+.main-page-grid {
+    display: grid;
+    grid-template-columns: repeat(60, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+        .main-page-news {
+            border: 1px solid $g2;
+            border-radius: 8px;
+            margin-top: 40px;
+            background: $g1;
+            height: 20vh;
+            grid-area: 1 /17 / 2 / 42;
+        }
+
+        h4 {
+            opacity: 0.5;
+            color: #43655A;
+            font-weight: lighter;
+            grid-area: 1 /17 / 2 / 42;
+
+            .flex-date-main-page {
+                display: $f;
+                align-items: center;
+            }
+
+            .news-dot {
+                font-size: 30px;
+                margin-left: -10px;
+                opacity: 0; 
+                animation: opacityOnAndOff 5s normal infinite forwards;
+                animation-delay: .5s;
+            }
+            
+            @keyframes opacityOnAndOff {
+                0% {
+                    opacity: 1;
+                }
+                25% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                75% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+    .kek {
+        margin-top: 40px;
+        grid-area: 1 / 45 / 2 / 53;
+        background-color: white;
+    }
+
+    .kek1 {
+        border: 1px solid $g2;
+        border-radius: 8px;
+        margin-top: 40px;
+        background: $g1;
+        height: 20vh;
+        grid-area: 1 / 9 / 2 / 16;
+    }
+}
+/* MAIN PAGE */
