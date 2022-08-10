@@ -1,10 +1,12 @@
 import React from 'react';
+import postViewsImg from '../../images/posts/views.png';
+import MainPagePostLoader from './Skeleton';
 
 import { UserInfo } from '../UserInfo/UserInfo';
-
 export const Post = ({
   _id,
   title,
+  text,
   createdAt,
   imageUrl,
   user,
@@ -16,9 +18,24 @@ export const Post = ({
   isLoading,
   isEditable,
 }) => {
+
     if (isLoading) {
-        return '';
+      return  <div style={{ width: "100%"}}>
+      <MainPagePostLoader viewBox="0 0 350 240"/>
+    </div>;
   }
+
+  let viewsText = 'vizualizări'
+
+  if (viewsCount === 1) {
+    viewsText = 'vizualizare'
+  }
+
+  let textDots = ''
+
+    if (text.length > 250) {
+      textDots = '...'
+    }
 
   const onClickRemove = () => {};
 
@@ -29,19 +46,21 @@ export const Post = ({
         {isEditable && (
         <div className='edit-delete'>
           <a href={`/posts/${_id}/edit`}>
-            <span>EDIT</span>
+            <span>e</span>
           </a>
-          <span onClick={onClickRemove}>DELETE</span>
+          <span onClick={onClickRemove}>d</span>
         </div>
       )}
+          <div className='views-counter'>
+          <img src={postViewsImg} width={16} height={16} /><span>{viewsCount} {viewsText }</span>
+          </div>
       </div>
-
-
-
-
-                <h2 className=''>
-            {isFullPost ? title : <a href={`/posts/${_id}`}>{title}</a>}
+          <h2>
+            {isFullPost ? title : <a href={`/posts/${_id}`}>{title.substring(0, 150)}</a>}
           </h2>
+          <h3>
+            {text.substring(0, 250)}{textDots}
+          </h3>
       {imageUrl && (
         <img
           className='post-img'
@@ -49,9 +68,7 @@ export const Post = ({
           alt={title}
         />
       )}
-      <div className=''>
-        <div className=''>
-          <ul className=''>
+          <ul className='tags'>
             {tags.map((name) => (
               <li key={name}>
                 <a href={`/tag/${name}`}>#{name}</a>
@@ -59,18 +76,12 @@ export const Post = ({
             ))}
           </ul>
           {children && <div className=''>{children}</div>}
-          <ul className=''>
-            <li>
-              VIEWS
-              <span>{viewsCount}</span>
-            </li>
+          <ul className='comments-like'>
             <li>
               COMMENTS
               <span>{commentsCount}</span>
             </li>
           </ul>
-        </div>
-      </div>
     </div>
   );
 };

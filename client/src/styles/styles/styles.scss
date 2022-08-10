@@ -335,10 +335,20 @@ body {
         padding: 10px;
         display: $f;
         align-items: center;
+        justify-content: space-between;
             
         span {
-                padding-left: 8px;
+                padding-left: 5px;
             }
+
+        .views-counter {
+            display: $f;
+            align-items: center;
+            font-weight: lighter;
+            font-size: .8rem;
+            color: #8d8d8d;
+            opacity: .8;
+        }
 
         .user-info-module {
             display: $f;
@@ -347,7 +357,20 @@ body {
             .user-post-avatar {
                 max-width: 22px;
             }
+
+            .username {
+                font-weight: bold;
+                letter-spacing: .01rem;
+                opacity: .9;
+            }
            
+            .created-date {   
+                padding-left: 15px;
+                color: #43655a;
+                font-weight: lighter;
+                letter-spacing: .01rem;
+                opacity: .5;
+            }
         }
     }
 
@@ -355,7 +378,33 @@ body {
         padding: 0 10px 10px 10px;
     }
 
+    h3 {
+        padding: 0 10px 10px 10px;
+        font-size: 1rem;
+        letter-spacing: .01rem;
+        font-weight: lighter;
+        opacity: .8;
+    }
+
     .post-img {
         max-width: 100%;
+        min-width: 100%;
+    }
+
+    .tags {
+        display: $f;
+        justify-content: center;
+
+        li {
+            padding: 0 5px;
+            color: #236a99;
+            font-weight: lighter;
+            letter-spacing: .01rem;
+            opacity: .7;
+        }
+    }
+
+    .comments-like-section {
+        padding: 5px 10px;
     }
 }

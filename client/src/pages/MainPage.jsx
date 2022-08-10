@@ -5,7 +5,6 @@ import { fetchPosts, fetchTags } from '../redux/slices/posts';
 import { Post } from '../components/Post/Post';
 
 export const MainPage = () => {
-
   const dispatch = useDispatch();
   const { posts, tags } = useSelector(state => state.posts);
 
@@ -32,12 +31,13 @@ export const MainPage = () => {
     <div className='post'>
     {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => 
     isPostsLoading ? (
-    <Post key={index} isLoading={true}/> 
+    <Post key={index} isLoading={true}/>
     ) : (
             <Post
               id={obj._id}
               title={obj.title}
-              imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
+              text={obj.text}
+              imageUrl="https://i.simpalsmedia.com/point.md/news/809x456/e99dc6b03cddada6b16344fc3a458186.jpg"
               user={obj.user}
               createdAt={obj.createdAt}
               viewsCount={obj.viewsCount}
