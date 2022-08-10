@@ -28,8 +28,8 @@ export const MainPage = () => {
         <h3>Taguri</h3>
       </div>
     </div>
-    <div>
-      
+    <div className='main-page-grid'>
+    <div className='post'>
     {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => 
     isPostsLoading ? (
     <Post key={index} isLoading={true}/> 
@@ -46,7 +46,7 @@ export const MainPage = () => {
               isEditable
             />
           ))}
-      
+           </div>
     </div>
     </>
   )

@@ -23,28 +23,34 @@ export const Post = ({
   const onClickRemove = () => {};
 
   return (
-    <div className=''>
-      {isEditable && (
-        <div className=''>
+    <div className='post-bg'>
+      <div className='user-info'>
+        <UserInfo {...user} additionalText={createdAt} />
+        {isEditable && (
+        <div className='edit-delete'>
           <a href={`/posts/${_id}/edit`}>
             <span>EDIT</span>
           </a>
           <span onClick={onClickRemove}>DELETE</span>
         </div>
       )}
+      </div>
+
+
+
+
+                <h2 className=''>
+            {isFullPost ? title : <a href={`/posts/${_id}`}>{title}</a>}
+          </h2>
       {imageUrl && (
         <img
-          className=''
+          className='post-img'
           src={imageUrl}
           alt={title}
         />
       )}
       <div className=''>
-        <UserInfo {...user} additionalText={createdAt} />
         <div className=''>
-          <h2 className=''>
-            {isFullPost ? title : <a href={`/posts/${_id}`}>{title}</a>}
-          </h2>
           <ul className=''>
             {tags.map((name) => (
               <li key={name}>

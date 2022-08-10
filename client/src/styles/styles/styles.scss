@@ -319,3 +319,43 @@ body {
     }
 }
 /* MAIN PAGE */
+
+.post {
+    grid-area: 1 /17 / 2 / 42;
+}
+
+
+.post-bg {
+    background: $g1;
+    border-radius: 8px;
+    border: 1px solid $g2;
+    margin: 20px 0;
+
+    .user-info {
+        padding: 10px;
+        display: $f;
+        align-items: center;
+            
+        span {
+                padding-left: 8px;
+            }
+
+        .user-info-module {
+            display: $f;
+            align-items: center;
+
+            .user-post-avatar {
+                max-width: 22px;
+            }
+           
+        }
+    }
+
+    h2 {
+        padding: 0 10px 10px 10px;
+    }
+
+    .post-img {
+        max-width: 100%;
+    }
+}
