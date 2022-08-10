@@ -4,7 +4,7 @@ import MainPagePostLoader from './Skeleton';
 
 import { UserInfo } from '../UserInfo/UserInfo';
 export const Post = ({
-  _id,
+  id,
   title,
   text,
   createdAt,
@@ -24,6 +24,8 @@ export const Post = ({
       <MainPagePostLoader viewBox="0 0 350 240"/>
     </div>;
   }
+
+  const urlRegex = /\s/g;
 
   let viewsText = 'vizualizări'
 
@@ -45,7 +47,7 @@ export const Post = ({
         <UserInfo {...user} additionalText={createdAt} />
         {isEditable && (
         <div className='edit-delete'>
-          <a href={`/posts/${_id}/edit`}>
+          <a href={`/posts/${id}/edit`}>
             <span>e</span>
           </a>
           <span onClick={onClickRemove}>d</span>
@@ -56,7 +58,7 @@ export const Post = ({
           </div>
       </div>
           <h2>
-            {isFullPost ? title : <a href={`/posts/${_id}`}>{title.substring(0, 150)}</a>}
+            {isFullPost ? title : <a href={`/posts/${id}`}>{title.substring(0, 150)}</a>}
           </h2>
           <h3>
             {text.substring(0, 250)}{textDots}
