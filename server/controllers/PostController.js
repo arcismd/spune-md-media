@@ -6,7 +6,7 @@ export const getLastTags = async (req, res) => {
 
         const tags = posts.map(obj => obj.tags).flat().slice(0, 5);
 
-        res.json(posts);
+        res.json(tags);
     } catch (error) {
         console.log(error)
         res.status(500).json({
@@ -57,7 +57,7 @@ export const getOne = async (req, res) => {
             res.json(doc);
         },
         
-        );
+        ).populate('user');
 
     } catch (error) {
         console.log(error)
@@ -106,7 +106,7 @@ export const create = async (req, res) => {
             title: req.body.title,
             text: req.body.text,
             imageUrl: req.body.imageUrl,
-            tags: req.body.tags,
+            tags: req.body.tags.trim().replace(' ', '').split(','),
             user: req.userId,
         });
 
@@ -131,8 +131,8 @@ export const update = async (req, res) => {
         title: req.body.title,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
-        user: req.body.userId,
-        tags: req.body.tags,
+        user: req.userId,
+        tags: req.body.tags.trim().replace(' ', '').split(','),
     },);
 
     res.json({

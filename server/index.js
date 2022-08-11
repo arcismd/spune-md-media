@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import fs from 'fs';
 import {
     registerValidation,
     loginValidation,
@@ -20,12 +21,15 @@ const app = express();
 // Image upload
 const storage = multer.diskStorage({
     destination: (_, __, cb) => {
-        cb(null, 'uploads');
+      if (!fs.existsSync('uploads')) {
+        fs.mkdirSync('uploads');
+      }
+      cb(null, 'uploads');
     },
-    filnename: (_, file, cb) => {
-        cb(null, file.originalname);
+    filename: (_, file, cb) => {
+      cb(null, file.originalname);
     },
-});
+  });
 
 const upload = multer({
     storage

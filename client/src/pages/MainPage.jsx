@@ -6,6 +6,7 @@ import { Post } from '../components/Post/Post';
 
 export const MainPage = () => {
   const dispatch = useDispatch();
+  const userData = useSelector(state => state.auth.data);
   const { posts, tags } = useSelector(state => state.posts);
 
   const isPostsLoading = posts.status === 'loading';
@@ -37,13 +38,13 @@ export const MainPage = () => {
               id={obj._id}
               title={obj.title}
               text={obj.text}
-              imageUrl="https://i.simpalsmedia.com/point.md/news/809x456/e99dc6b03cddada6b16344fc3a458186.jpg"
+              imageUrl={obj.imageUrl}
               user={obj.user}
               createdAt={obj.createdAt}
               viewsCount={obj.viewsCount}
               commentsCount={obj.commentsCount}
               tags={obj.tags}
-              isEditable
+              isEditable={userData?._id === obj.user._id}
             />
           ))}
            </div>

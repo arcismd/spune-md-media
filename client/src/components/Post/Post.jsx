@@ -1,5 +1,6 @@
 import React from 'react';
 import postViewsImg from '../../images/posts/views.png';
+import { Link } from 'react-router-dom';
 import MainPagePostLoader from './Skeleton';
 
 import { UserInfo } from '../UserInfo/UserInfo';
@@ -24,8 +25,6 @@ export const Post = ({
       <MainPagePostLoader viewBox="0 0 350 240"/>
     </div>;
   }
-
-  const urlRegex = /\s/g;
 
   let viewsText = 'vizualizări'
 
@@ -54,11 +53,13 @@ export const Post = ({
         </div>
       )}
           <div className='views-counter'>
-          <img src={postViewsImg} width={16} height={16} /><span>{viewsCount} {viewsText }</span>
+          <img src={postViewsImg} width={16} height={16} /><span>{viewsCount} {viewsText}</span>
           </div>
       </div>
           <h2>
-            {isFullPost ? title : <a href={`/posts/${id}`}>{title.substring(0, 150)}</a>}
+            {isFullPost ? title :   
+            <Link
+          to={`/posts/${id}`}>{title.substring(0, 150)}</Link>}
           </h2>
           <h3>
             {text.substring(0, 250)}{textDots}
@@ -66,7 +67,7 @@ export const Post = ({
       {imageUrl && (
         <img
           className='post-img'
-          src={imageUrl}
+          src={`http://localhost:4444${imageUrl}`}
           alt={title}
         />
       )}

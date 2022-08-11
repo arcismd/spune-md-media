@@ -18,7 +18,7 @@ export const FullPost = () => {
 }, []);
 
   if (isLoading) {
-      return <Post isLoading={isLoading} />;
+      return <Post isLoading={isLoading} isFullPost/>;
   }
 
   return (
@@ -26,15 +26,16 @@ export const FullPost = () => {
           <Post
               id={data._id}
               title={data.title}
-              text={data.text}
-              imageUrl="https://i.simpalsmedia.com/point.md/news/809x456/e99dc6b03cddada6b16344fc3a458186.jpg"
+              text={data.text.substring(0, 0)}
+              imageUrl={data.imageUrl}
               user={data.user}
               createdAt={data.createdAt}
               viewsCount={data.viewsCount}
               commentsCount={data.commentsCount}
               tags={data.tags}
-              isEditable
-            />
+              isFullPost>
+                <p>{data.text}</p>
+              </Post>
     </>
   )
 }
