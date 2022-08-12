@@ -32,7 +32,7 @@ const postsSlice = createSlice({
 
         },
         [fetchPosts.fulfilled]: (state, action) => {
-            state.posts.items = action.payload;
+            state.posts.items = action.payload.sort((a, b) => b-a);
             state.posts.status = 'loaded';
         
         },

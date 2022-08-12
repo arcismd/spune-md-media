@@ -8,6 +8,7 @@ export const Post = ({
   id,
   title,
   text,
+  mainText,
   createdAt,
   imageUrl,
   user,
@@ -61,6 +62,9 @@ export const Post = ({
             <Link
           to={`/posts/${id}`}>{title.substring(0, 150)}</Link>}
           </h2>
+          <h3>
+            {mainText.substring(0, 250)}{textDots}
+          </h3>
           <h3>
             {text.substring(0, 250)}{textDots}
           </h3>

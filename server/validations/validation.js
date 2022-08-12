@@ -13,8 +13,9 @@ export const registerValidation = [
 ];
 
 export const postCreateValidation = [
-    body('title', 'Introduceţi denumirea titlului').isLength({ min: 3 }).isString(),
-    body('text', 'Introduceţi textul pentru articol').isLength({ min: 10 }).isString(), 
+    body('title', 'Introduceţi denumirea titlului').optional().isLength({ min: 0 }).isString(),
+    body('text', 'Introduceţi textul pentru articol').optional().isLength({ min: 0 }).isString(),
+    body('mainText', 'Spune textul pentru articol').isLength({ min: 10 }).isString(),  
     body('tags', 'Tag-urile introduse greșit').optional().isLength({ max: 3 }).isString(),
     body('imageUrl', 'Adresă greșită pentru imagine').optional().isString(),
 ];

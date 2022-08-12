@@ -1,7 +1,7 @@
 import { Layout } from "./components/Layout";
 import { Routes, Route } from 'react-router-dom';
 import { MainPage } from './pages/MainPage';
-import { AddPostPage } from './pages/AddPostPage';
+import { AddPostPage } from './pages/AddPost/AddPostPage';
 import { EditPostPage } from './pages/EditPostPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path=':id/edit' element={<EditPostPage />} />
-        <Route path='new' element={<AddPostPage />} />
+        <Route path='spune' element={<AddPostPage />} />
         <Route path='login' element={<LoginPage />} />
         <Route path='register' element={<RegisterPage />} />
         <Route path='posts/:id' element={<FullPost />} />

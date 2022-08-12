@@ -38,6 +38,7 @@ export const MainPage = () => {
               id={obj._id}
               title={obj.title}
               text={obj.text}
+              mainText={obj.mainText}
               imageUrl={obj.imageUrl}
               user={obj.user}
               createdAt={obj.createdAt}

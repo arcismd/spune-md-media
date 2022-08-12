@@ -105,8 +105,9 @@ export const create = async (req, res) => {
         const doc = new PostModel({
             title: req.body.title,
             text: req.body.text,
+            mainText: req.body.mainText,
             imageUrl: req.body.imageUrl,
-            tags: req.body.tags.trim().replace(' ', '').split(','),
+            tags: req.body.tags,
             user: req.userId,
         });
 
@@ -130,9 +131,10 @@ export const update = async (req, res) => {
     }, {
         title: req.body.title,
         text: req.body.text,
+        mainText: req.body.mainText,
         imageUrl: req.body.imageUrl,
         user: req.userId,
-        tags: req.body.tags.trim().replace(' ', '').split(','),
+        tags: req.body.tags,
     },);
 
     res.json({

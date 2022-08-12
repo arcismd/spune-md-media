@@ -26,7 +26,8 @@ export const FullPost = () => {
           <Post
               id={data._id}
               title={data.title}
-              text={data.text.substring(0, 0)}
+              text={data.text}
+              mainText={data.mainText}
               imageUrl={data.imageUrl}
               user={data.user}
               createdAt={data.createdAt}

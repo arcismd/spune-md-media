@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
-import { selectIsAuth } from '../redux/slices/auth';
+import { selectIsAuth } from '../../redux/slices/auth';
 import SimpleMDE from 'react-simplemde-editor';
-import axios from '../axios'
+import axios from '../../axios'
+import './AddPost.css'
 
 import 'easymde/dist/easymde.min.css';
 
@@ -15,6 +16,7 @@ export const AddPostPage = () => {
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState('');
+  const [mainText, setMainText] = React.useState('');
   const inputFileRef = React.useRef(null);
 
   const handleChangeFile = async (event) => {
@@ -45,8 +47,9 @@ export const AddPostPage = () => {
       const fields = {
         title,
         imageUrl,
+        mainText,
         tags,
-        text,
+        text
       }
 
       const { data } = await axios.post('/posts', fields)
@@ -100,6 +103,11 @@ export const AddPostPage = () => {
         placeholder="Titlul..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+      />
+        <input
+        placeholder="SPUNE"
+        value={mainText}
+        onChange={(e) => setMainText(e.target.value)}
       />
       <input 
       placeholder="Taguri"

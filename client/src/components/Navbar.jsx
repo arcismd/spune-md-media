@@ -36,7 +36,7 @@ export const Navbar = () => {
               />
               {isAuth ? ( 
               <NavLink
-              to={'new'}
+              to={'spune'}
               >
                 <button className='add-post-btn'>
                   <div className='flex-post-btn'>
