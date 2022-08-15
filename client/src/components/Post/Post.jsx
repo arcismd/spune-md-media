@@ -1,5 +1,6 @@
 import React from 'react';
 import postViewsImg from '../../images/posts/views.png';
+import commentsImg from '../../images/posts/comments.png';
 import { Link } from 'react-router-dom';
 import MainPagePostLoader from './Skeleton';
 
@@ -63,10 +64,9 @@ export const Post = ({
           to={`/posts/${id}`}>{title.substring(0, 150)}</Link>}
           </h2>
           <h3>
-            {mainText.substring(0, 250)}{textDots}
-          </h3>
-          <h3>
-            {text.substring(0, 250)}{textDots}
+          <Link
+          to={`/posts/${id}`}>
+            {mainText.substring(0, 250)}{textDots}</Link>
           </h3>
       {imageUrl && (
         <img
@@ -75,18 +75,10 @@ export const Post = ({
           alt={title}
         />
       )}
-          <ul className='tags'>
-            {tags.map((name) => (
-              <li key={name}>
-                <a href={`/tag/${name}`}>#{name}</a>
-              </li>
-            ))}
-          </ul>
           {children && <div className=''>{children}</div>}
-          <ul className='comments-like'>
-            <li>
-              COMMENTS
-              <span>{commentsCount}</span>
+          <ul className='comments-like-section'>
+            <li className='flex-items'>
+            <img src={commentsImg} width={24} height={24} /><span> {commentsCount}</span>
             </li>
           </ul>
     </div>

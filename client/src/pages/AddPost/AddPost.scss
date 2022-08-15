@@ -15,20 +15,92 @@
             font-size: 1rem;
             &:focus {
                 outline: none !important;
-                border-color: #719ECE;
-                box-shadow: 0 0 10px #719ECE;
+                border-color: #e2e2e2;
+                box-shadow: 2px 5px 10px #e2e2e2;
             }
 		}
         textarea {
-            border: 1px solid rgb(206, 147, 147);
+            border: 1px solid rgb(206, 206, 206);
             min-height: 20vh;
             &:focus {
                 outline: none !important;
-                border-color: #719ECE;
-                box-shadow: 0 0 10px #719ECE;
+                border-color: rgb(206, 206, 206);
+                box-shadow: 2px 5px 10px rgb(206, 206, 206);
             }
         }
 	}
+    
+    .add-image-btn,
+    .delete-image-btn,
+    .pub-btn,
+    .ann-btn {
+        padding: 15px 15px;
+        margin-bottom: 20px;
+        border: none;
+        background: rgb(206, 206, 206, .5);
+        font-size: .8rem;
+        &:hover {
+            cursor: pointer;
+            background: rgb(206, 206, 206, 1);
+        }
+        &:active {
+            cursor: pointer;
+            background: rgb(206, 206, 206, 1);
+        }
+    }
+
+    .delete-image-btn {
+        margin-top: 20px;
+    }
+
+    .flex-bottom-btns {
+        display: flex;
+        justify-content: center;
+    }
+
+    .pub-btn,
+    .ann-btn {
+        font-size: .9rem;
+        margin: 20px 10px 20px 10px;
+    }
+    .pub-btn {
+        padding: 0 30px;
+        background: #b0e7a8;
+        opacity: .5;
+        &:hover {
+            background: #b0e7a8;
+            opacity: 1;
+        }
+        &:active {
+            background: #b0e7a8;
+            opacity: 1;
+        }
+    }
+    .ann-btn {
+        background: #e7a8a8;
+        opacity: .5;
+        &:hover {
+            background: #e7a8a8;
+            opacity: 1;
+        }
+        &:active {
+            background: #e7a8a8;
+            opacity: 1;
+        }
+    }
+
+    .flex-post-image {
+        display: flex;
+        flex-direction: column;
+        .post-image {
+
+        }
+    }
+
+    .editor {
+       
+    }
+
 }
 
 @media (max-width: 1380px) {
@@ -49,12 +121,25 @@
     .container {
         max-width: 80vw;
         margin: 0 auto;
+        
+        .add-image-btn {
+            padding: 15px 15px;
+            margin-bottom: 20px;
+            border: none;
+            background: rgb(206, 206, 206, .5);
+            font-size: .8rem;
+            &:hover {
+                cursor: pointer;
+                background: rgb(206, 206, 206, .5);
+            }
+    }
+
     }
 }
 
 @media (max-width: 600px) {
     .container {
-        max-width: 90vw;
+        max-width: 95vw;
         margin: 0 auto;
     }
 }

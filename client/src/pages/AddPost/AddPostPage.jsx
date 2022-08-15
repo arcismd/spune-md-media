@@ -4,6 +4,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/auth";
 import axios from "../../axios";
 import SimpleMDE from "react-simplemde-editor";
+import customMarkdownParser from "react-simplemde-editor";
 
 import "./AddPost.css";
 import "easymde/dist/easymde.min.css";
@@ -66,14 +67,29 @@ export const AddPostPage = () => {
 	const options = React.useMemo(
 		() => ({
 			spellChecker: false,
+      tabSize: 1,
 			maxHeight: "400px",
 			autofocus: true,
 			placeholder: "Introduceți textul",
 			status: false,
+      showIcons: ['strikethrough', 'code', 'table', 'heading', 'heading-bigger', 'heading-smaller', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule'],
 			autosave: {
 				enabled: true,
 				delay: 1000,
 			},
+      lineWrapping: false,
+      parsingConfig: {
+        allowAtxHeaderWithoutSpace: true,
+        strikethrough: false,
+        underscoresBreakWords: true,
+      },
+      previewRender: function(plainText, preview) {
+        setTimeout(function(){
+          preview.innerHTML = customMarkdownParser(plainText);
+        }, 250);
+    
+        return "Loading...";
+      },
 		}),
 		[]
 	);
@@ -93,7 +109,7 @@ export const AddPostPage = () => {
 				onChange={(e) => setTitle(e.target.value)}
 			/>
 			<textarea
-				placeholder="Spune (câmp obligatoriu)."
+				placeholder="Spune (câmp obligatoriu)"
 				value={mainText}
 				onChange={(e) => setMainText(e.target.value)}
 			/>
@@ -103,8 +119,8 @@ export const AddPostPage = () => {
 				onChange={(e) => setTags(e.target.value)}
 			/>
       </div>
-
-			<button className="add-image-btn" onClick={() => inputFileRef.current.click()}>Incarca poza</button>
+      <div className="flex-post-image">
+			<button className="add-image-btn" onClick={() => inputFileRef.current.click()}>Încarcă poză</button>
 			<input
 				ref={inputFileRef}
 				type="file"
@@ -112,27 +128,28 @@ export const AddPostPage = () => {
 				hidden
 			/>
 			{imageUrl && (
-				<div>
-					<button onClick={onClickRemoveImage}>Sterge poza</button>
+				<div className="flex-post-image">
 					<img
-						className=""
+						className="post-image "
 						src={`http://localhost:4444${imageUrl}`}
 						alt="Uploaded"
 					/>
+          <button className="delete-image-btn" onClick={onClickRemoveImage}>Șterge poza</button>
 				</div>
 			)}
+      </div>
 
 			<SimpleMDE
-				className=""
+        className="editor"
 				vlaue={text}
 				onChange={onChange}
 				options={options}
 			/>
 
-			<div className="">
-				<button onClick={onSubmit}>Publica</button>
+			<div className="flex-bottom-btns">
+				<button className="pub-btn" onClick={onSubmit}>Publică</button>
 				<Link to="/">
-					<button>Anulare</button>
+					<button className="ann-btn">Anulează</button>
 				</Link>
 			</div>
     </div>
